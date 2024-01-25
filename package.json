@@ -2,7 +2,7 @@
   "name": "vanillajs-to-typescript",
   "version": "1.0.0",
   "description": "Vanilla javascript SPA",
-  "main": "./index.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./webpack.config.js",
     "build": "webpack --mode production --config ./webpack.config.js",
