@@ -1,0 +1,21 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5% 15px 5%;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+#left-logo {
+  align-self: flex-start;
+  font-size: larger;
+}
+
+#left-logo > span {
+  font-weight: 800;
+}
+
+#right-menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
