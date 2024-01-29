@@ -1,4 +1,4 @@
-import Card from '../components/Card'
+import Card from '../components/Card.js'
 import '../assets/style/pages/Home.css'
 
 const HomePage = ({ app }) => {

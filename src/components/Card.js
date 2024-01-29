@@ -29,10 +29,7 @@ const Card = ({ app, route }) => {
     `
         content.querySelector('a').addEventListener('click', (e) => {
             e.preventDefault();
-            window.history.pushState(null, '', `#/post/${route}`);
-            console.log(`#/post/${route}`)
-            const popStateEvent = new PopStateEvent('popstate', { state: null });
-            dispatchEvent(popStateEvent);
+            window.location.hash = `/post/${route}`;
         });
     }
     

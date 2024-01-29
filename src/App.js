@@ -11,7 +11,6 @@ const App = (app) => {
         new Header({ app });
         if (page.startsWith('#/post/')) {
             const route = parseInt(page.replace('#/post/', ''));
-            console.log('route app',route)
             new Post({ app,route });
         } else {
             new HomePage({ app });
