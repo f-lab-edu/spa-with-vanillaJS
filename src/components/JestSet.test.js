@@ -1,4 +1,4 @@
-const { testFunction } = require('./JestSet');
+import { testFunction } from './JestSet.js';
 
 describe('테스트케이스 동작 확인', () => {
     test('덧셈 함수 동작 확인', () => {
