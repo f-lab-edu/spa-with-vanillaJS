@@ -4,10 +4,8 @@ import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
-import Router from '../router/Router.js'
-import routes from '../routes.js'
-// import Router from '../router/Router.js'
-const Card = ({ app, route }) => {
+
+const Card = ({ app, id }) => {
     const images = [Image0,Image1,Image2,Image3,Image4]
     const content = document.createElement('div');
     content.className = "container"
@@ -15,10 +13,8 @@ const Card = ({ app, route }) => {
     
     const img = document.createElement('img');
     img.className = "thumbnail"
-    img.src = images[route];
+    img.src = images[id];
 
-    // const router = new Router(content);
-    // const router = new Router(routes(root));
     const render = () => {
         content.innerHTML = `
             <a class = "contents" href="/about">
@@ -33,7 +29,7 @@ const Card = ({ app, route }) => {
     `
         content.querySelector('a').addEventListener('click', (e) => {
             e.preventDefault();
-            window.history.pushState(null, '', '/about');
+            window.history.pushState(null, '', `/posts/${id}`);
             const popStateEvent = new PopStateEvent('popstate', { state: null });
             dispatchEvent(popStateEvent);
         });

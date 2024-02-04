@@ -24,17 +24,11 @@ const App = (app) => {
         new Footer({ app: footer });
     }
 
-    window.addEventListener('popstate', () => {
-        const currentPath = window.location.pathname;
-        const matchedRoute = routes(main).find(route => route.path === currentPath);
-
-        if (matchedRoute) {
-            matchedRoute.callback();
-        } else {
-            console.log('Route not found');
-        }
-        
-    });
+    // window.addEventListener('popstate', () => {
+    //     const currentPath = window.location.pathname;
+    //     const router = new Router(routes(main));
+    //     router.navigateTo(currentPath);
+    // });
     render();
 }
 

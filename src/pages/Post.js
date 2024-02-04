@@ -6,6 +6,8 @@ import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 
 const Post = ({ app }) => {
+    const id = window.location.pathname.split('/').pop();
+
     app.innerHTML = ''
     const images = [Image0,Image1,Image2,Image3,Image4]
     const content = document.createElement('div')
@@ -15,16 +17,13 @@ const Post = ({ app }) => {
 
     const img = document.createElement('img');
     img.className = "title-image"
-    img.src = images[0];
+    img.src = images[id];
 
-    
-
-    const render = () => {
-        // const HeaderComponent = new Header({ content,router });
+    const render = (id) => {
         content.innerHTML = `
             ${img.outerHTML}
             <h1 id = "post-title">
-                이것은 $1번째 포스트 페이지입니다.
+                이것은 ${id}번째 포스트 페이지입니다.
             </h1>
             <p id = "post-content">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -59,7 +58,9 @@ const Post = ({ app }) => {
         `
         // const FooterComponent = new Footer({ content });
     }
-    render();
+
+    
+    render(id);
 }
 
 export default Post;

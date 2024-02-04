@@ -18,7 +18,7 @@ const HomePage = ({ app }) => {
     render();
     
     for(let i = 0; i < 5; i++) {
-        const card = new Card({ app:content, route:i});
+        const card = new Card({ app:content, id:i});
     }
 }
 
