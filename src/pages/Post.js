@@ -5,7 +5,8 @@ import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 
-const Post = ({ app, route }) => {
+const Post = ({ app }) => {
+    app.innerHTML = ''
     const images = [Image0,Image1,Image2,Image3,Image4]
     const content = document.createElement('div')
     content.className = 'post-content';
@@ -14,15 +15,16 @@ const Post = ({ app, route }) => {
 
     const img = document.createElement('img');
     img.className = "title-image"
-    img.src = images[route];
+    img.src = images[0];
 
     
 
     const render = () => {
+        // const HeaderComponent = new Header({ content,router });
         content.innerHTML = `
             ${img.outerHTML}
             <h1 id = "post-title">
-                이것은 ${route}번째 포스트 페이지입니다.
+                이것은 $1번째 포스트 페이지입니다.
             </h1>
             <p id = "post-content">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -55,6 +57,7 @@ const Post = ({ app, route }) => {
                 Aperiam deleniti molestiae hic porro! Harum voluptatem eligendi odio voluptate quis, earum quidem nihil, ullam maiores sed optio deserunt praesentium ipsam minima? Earum harum eveniet ut delectus qui tenetur esse?
             </p>
         `
+        // const FooterComponent = new Footer({ content });
     }
     render();
 }

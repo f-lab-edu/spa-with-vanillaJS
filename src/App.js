@@ -1,26 +1,42 @@
 
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
-import HomePage from './pages/Home.js'
-import Post from './pages/Post.js'
+import Router from './router/Router.js'
+import routes from './routes.js'
 
 const App = (app) => {
+    const header = document.createElement('header');
+    const main = document.createElement('main');
+    const footer = document.createElement('footer');
+
+    app.appendChild(header);
+    app.appendChild(main);
+    app.appendChild(footer);
+
+    
     const render = () => {
-        app.innerHTML = '';
-        const page = window.location.hash;
-        new Header({ app });
-        if (page.startsWith('#/post/')) {
-            const route = parseInt(page.replace('#/post/', ''));
-            new Post({ app,route });
-        } else {
-            new HomePage({ app });
-        }
-        new Footer({ app });
+        const router = new Router(routes(main));
+        router;
+        header.innerHTML = '';
+        footer.innerHTML = '';
+
+        new Header({ app: header });
+        new Footer({ app: footer });
     }
 
-    window.addEventListener('hashchange', render);
-    window.onpopstate = render;
+    window.addEventListener('popstate', () => {
+        const currentPath = window.location.pathname;
+        const matchedRoute = routes(main).find(route => route.path === currentPath);
+
+        if (matchedRoute) {
+            matchedRoute.callback();
+        } else {
+            console.log('Route not found');
+        }
+        
+    });
     render();
 }
+
 
 export default App;

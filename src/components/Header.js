@@ -1,13 +1,10 @@
 import '../assets/style/components/Header.css'
 
 const Header = ({ app }) => {
-	const content = document.createElement('div');
-    app.appendChild(content);
-
     const render = () => {
-        content.innerHTML = `
+        app.innerHTML = `
             <header class = "menu">
-                <a href = "/" id="left-logo"> <span>Tost</span>tech</a>
+                <div id="left-logo"> <span>Tost</span>tech</div>
                 <div id = "right-menu">
                     <div id="page">디자인</div>
                     <div id="page">개발</div>
@@ -15,8 +12,10 @@ const Header = ({ app }) => {
                 </div>  
             </header>
         `
-        content.querySelector('a').addEventListener('click', (e) => {
-            e.preventDefault();
+        const logoBtn = document.getElementById('left-logo');
+        logoBtn.addEventListener('click', (e) => {
+            const currentPath = window.location.pathname;
+            if (currentPath!="/")
             window.history.pushState(null, '', '/');
             const popStateEvent = new PopStateEvent('popstate', { state: null });
             dispatchEvent(popStateEvent);

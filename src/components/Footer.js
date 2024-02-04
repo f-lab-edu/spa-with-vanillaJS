@@ -1,12 +1,14 @@
 import '../assets/style/components/Footer.css'
 
-export default function Header({ app }) {
-	this.target = document.createElement('div');
-    app.appendChild(this.target);
+export default function Footer({ app }) {
+    console.log("Footer", app)
+    app.innerHTML = '';
+    const content = document.createElement('footer')
+    content.className = 'foot';
+    app.appendChild(content);
 
     const render = () => {
-        this.target.innerHTML = `
-            <footer class = "foot">
+        content.innerHTML = `
                 <div id="adv">토스트팀이 만드는 <br/> 수많은 혁신의 순간들</div>
                     <div class = "services">
                         <div id="menu">
@@ -25,7 +27,6 @@ export default function Header({ app }) {
                         </div>
                     </div>
                 </div>
-            </footer>
     `
     }
     render();

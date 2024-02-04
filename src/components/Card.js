@@ -4,20 +4,24 @@ import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
-
+import Router from '../router/Router.js'
+import routes from '../routes.js'
+// import Router from '../router/Router.js'
 const Card = ({ app, route }) => {
     const images = [Image0,Image1,Image2,Image3,Image4]
     const content = document.createElement('div');
     content.className = "container"
     app.appendChild(content);
-
+    
     const img = document.createElement('img');
     img.className = "thumbnail"
     img.src = images[route];
 
+    // const router = new Router(content);
+    // const router = new Router(routes(root));
     const render = () => {
         content.innerHTML = `
-            <a class = "contents" href="#/post/${route}">
+            <a class = "contents" href="/about">
                 ${img.outerHTML}
                 <div class = "posts">
                     <h1 id="title">그 많은 개발 문서는 누가 다 만들었을까</h1>
@@ -29,7 +33,9 @@ const Card = ({ app, route }) => {
     `
         content.querySelector('a').addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.hash = `/post/${route}`;
+            window.history.pushState(null, '', '/about');
+            const popStateEvent = new PopStateEvent('popstate', { state: null });
+            dispatchEvent(popStateEvent);
         });
     }
     
