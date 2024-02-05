@@ -1,36 +1,25 @@
-
+// App.js
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
 import Router from './router/Router.js'
 import routes from './routes.js'
+import Component from './core/Components.js'
 
-const App = (app) => {
-    const header = document.createElement('header');
-    const main = document.createElement('main');
-    const footer = document.createElement('footer');
+export default class App extends Component {
+  constructor($app) {
+      super($app);
+      this.setup();
+        this.render();
+        this.header = new Header({ $app: this.$app.querySelector('header') });
+        this.footer = new Footer({ $app: this.$app.querySelector('footer') });
+        this.router = new Router(routes(this.$app.querySelector('main')));
+  }
 
-    app.appendChild(header);
-    app.appendChild(main);
-    app.appendChild(footer);
-
-    
-    const render = () => {
-        const router = new Router(routes(main));
-        router;
-        header.innerHTML = '';
-        footer.innerHTML = '';
-
-        new Header({ app: header });
-        new Footer({ app: footer });
-    }
-
-    // window.addEventListener('popstate', () => {
-    //     const currentPath = window.location.pathname;
-    //     const router = new Router(routes(main));
-    //     router.navigateTo(currentPath);
-    // });
-    render();
+  template() {
+    return `
+      <header></header>
+      <main></main>
+      <footer></footer>
+    `;
+  }
 }
-
-
-export default App;
