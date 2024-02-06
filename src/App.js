@@ -6,10 +6,13 @@ import routes from './routes.js'
 import Component from './core/Components.js'
 
 export default class App extends Component {
-  constructor($app) {
+    constructor($app) {
+    //   this.
+    $app.innerHTML = '';
       super($app);
-      this.setup();
-        this.render();
+    
+    this.setup();
+    this.render();
         this.header = new Header({ $app: this.$app.querySelector('header') });
         this.footer = new Footer({ $app: this.$app.querySelector('footer') });
         this.router = new Router(routes(this.$app.querySelector('main')));

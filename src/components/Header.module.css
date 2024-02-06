@@ -1,0 +1,27 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5% 15px 5%;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.leftLogo {
+  align-self: flex-start;
+  font-size: larger;
+}
+
+.leftLogo:link,
+.leftLogo:visited {
+  text-decoration: none;
+  color: rgb(67, 72, 75);
+}
+
+.leftLogo > span {
+  font-weight: 800;
+}
+
+.rightMenu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}

@@ -1,29 +1,31 @@
-import '../assets/style/components/Header.css'
+import styles from './Header.module.css'
 import Component from '../core/Components.js'
 
-class Header extends Component {
+export default class Header extends Component {
     constructor({ $app }) {
         super($app);
+        
         this.setup();
-    this.render();
+        this.render();
     }
 
     template() {
         return `
-            <header class = "menu">
-                <div id="left-logo"> <span>Tost</span>tech</div>
-                <div id = "right-menu">
-                    <div id="page">디자인</div>
-                    <div id="page">개발</div>
-                    <div id="page">채용 바로가기</div>
+            <header class = "${styles.menu}">
+                <div class = "${styles.leftLogo}"> <span>Tost</span>tech</div>
+                <div class = "${styles.rightMenu}">
+                    <div>디자인</div>
+                    <div>개발</div>
+                    <div>채용 바로가기</div>
                 </div>  
             </header>
         `;
     }
 
     setEvent() {
-        const logoBtn = document.getElementById('left-logo');
+        const logoBtn = document.querySelector('div.' + styles.leftLogo);
         logoBtn.addEventListener('click', (e) => {
+            console.log('clicked')
             const currentPath = window.location.pathname;
             if (currentPath !== "/") {
                 window.history.pushState(null, '', '/');
@@ -34,4 +36,3 @@ class Header extends Component {
     }
 }
 
-export default Header;

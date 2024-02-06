@@ -10,20 +10,16 @@ export default class Card extends Component {
     constructor({ $app, id }) {
         super($app);
         this.id = id;
-        this.$container = document.createElement('div');
-        $app.appendChild(this.$container);
-        this.$app = this.$container;
         this.setup();
         this.render()
   }
 
     setup() {
-    this.images = [Image0, Image1, Image2, Image3, Image4];
+        this.images = [Image0, Image1, Image2, Image3, Image4];
         this.img = new Image();
         this.img.className = 'thumbnail';
-    this.img.src = this.images[this.id];
-    
-  }
+        this.img.src = this.images[this.id];
+    }
 
   template() {
     return `

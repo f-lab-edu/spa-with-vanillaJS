@@ -1,0 +1,19 @@
+.postContent {
+  text-align: center;
+  margin: 8% 20% 5% 20%;
+}
+
+.titleImage {
+  width: 60%;
+  height: 40%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.postTitle {
+  color: rgb(96, 103, 107);
+}
+
+.postSubContent {
+  text-align: left;
+}
