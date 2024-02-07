@@ -4,7 +4,6 @@ import Component from '../core/Components.js'
 export default class Header extends Component {
     constructor({ $app }) {
         super($app);
-        
         this.setup();
         this.render();
     }

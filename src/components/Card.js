@@ -1,4 +1,4 @@
-import '../assets/style/components/Card.css'
+import styles from './Card.module.css'
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
@@ -11,34 +11,34 @@ export default class Card extends Component {
         super($app);
         this.id = id;
         this.setup();
-        this.render()
-  }
+        this.render();
+    }
 
     setup() {
         this.images = [Image0, Image1, Image2, Image3, Image4];
         this.img = new Image();
         this.img.className = 'thumbnail';
+        this.img.className = styles.thumbnail;
         this.img.src = this.images[this.id];
     }
 
   template() {
     return `
-      <div class="container">
-        <a class="contents" href="/about">
+      <div class="${styles.container}">
+        <div class="${styles.contents}">
           ${this.img.outerHTML}
-          <div class="posts">
-            <h1 id="title">그 많은 개발 문서는 누가 다 만들었을까</h1>
-            <h3 id="contents">토스트 테크니컬 라이터가 하는 일에 이어, 개발자 경험 전반으로 역할을 확장해온 이야기를 공유해요</h3>
-            <h4 id="date">2024. 01. 25</h4>
+          <div class="${styles.posts}">
+            <h1>그 많은 개발 문서는 누가 다 만들었을까</h1>
+            <h3>토스트 테크니컬 라이터가 하는 일에 이어, 개발자 경험 전반으로 역할을 확장해온 이야기를 공유해요</h3>
+            <h4>2024. 01. 25</h4>
           </div>
-        </a>
+        </div>
       </div>
     `;
   }
 
   setEvent() {
-    this.$app.querySelector('a').addEventListener('click', (e) => {
-      e.preventDefault();
+    this.$app.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
       window.history.pushState(null, '', `/posts/${this.id}`);
       const popStateEvent = new PopStateEvent('popstate', { state: null });
       dispatchEvent(popStateEvent);

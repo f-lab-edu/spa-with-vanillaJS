@@ -1,4 +1,4 @@
-import './Post.module.css'
+import styles from './Post.module.css'
 import Component from '../core/Components.js'
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
@@ -10,7 +10,6 @@ export default class Post extends Component {
     constructor({ $app }) {
         $app.innerHTML = '';
         super($app);
-        
         this.id = window.location.pathname.split('/').pop();
         this.images = [Image0, Image1, Image2, Image3, Image4];
         this.setup();
@@ -26,17 +25,17 @@ export default class Post extends Component {
 
     template() {
         return `
-            <div class="post-content">
-                <img class="title-image" src="${this.state.img}" />
-                <h1 id="post-title">${this.state.title}</h1>
-                <p id = "post-content">
+            <div class = "${styles.postContent}">
+                <img class = "${styles.titleImage}" src="${this.state.img}" />
+                <h1 class = "${styles.postTitle}">${this.state.title}</h1>
+                <p class = "${styles.postSubContent}">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 <br/>
                 Voluptates rerum possimus officiis fugit nisi nostrum odit, doloribus provident amet earum voluptatum cupiditate necessitatibus ea eligendi tenetur unde? Ullam, totam similique!
                 Ea illum at voluptatum, optio animi recusandae laboriosam. Soluta quibusdam totam nulla perspiciatis quisquam. Soluta autem iste placeat error est corporis similique quisquam animi! Adipisci tempore laborum esse placeat dolor!
                 Vel temporibus perspiciatis libero eligendi aspernatur laboriosam. 
             </p>
-            <p id = "post-content">
+            <p class = "${styles.postSubContent}">
                 Ullam quo beatae nobis voluptates dignissimos harum deleniti. Mollitia similique numquam modi odit ipsam inventore minima beatae doloribus facere vero, vel ut quo!
                 Consequuntur consectetur aperiam sequi amet corrupti ut fuga quidem eligendi non nam odio aspernatur qui suscipit illo, accusantium assumenda tempora, sed, sapiente fugit repellendus. Consequatur saepe unde laudantium voluptatum nostrum.
                 Ipsum velit ducimus excepturi quaerat autem harum voluptatem reprehenderit quia voluptas officiis aperiam porro obcaecati vitae distinctio possimus, necessitatibus at quod accusamus laudantium quos repellat recusandae fuga! Odit, minus dolorem.
@@ -50,7 +49,7 @@ export default class Post extends Component {
                 Sint quos nemo, quis quia placeat quaerat accusantium odio aspernatur dolore deleniti laborum nesciunt modi natus veritatis beatae distinctio animi atque ex! Ipsum dignissimos rerum ratione? Amet nobis quis nam?
                 Necessitatibus laborum, aut veniam quo corporis ratione, nisi excepturi alias accusantium blanditiis officiis sit nihil velit, quam ipsam ea aliquam nulla sapiente exercitationem odit quaerat! 
             </p>
-            <p id = "post-content">
+            <p class = "${styles.postSubContent}">
                 Adipisci quisquam iure laborum voluptates?
                 Quos vero itaque iure, corporis sunt, fugiat reprehenderit quam, possimus repellendus consectetur ad hic quae libero officiis ab sit architecto cum tempore modi optio iusto accusantium! Cupiditate, nihil aliquam? Eligendi!
                 Modi amet aliquam obcaecati est numquam vel blanditiis molestias architecto unde molestiae, minus laborum aut sunt cum, a debitis dignissimos ipsa sequi nulla odit pariatur! Pariatur sint ad incidunt magnam.
@@ -61,10 +60,5 @@ export default class Post extends Component {
             </p>
             </div>
         `
-    }
-
-    setEvent() {
-        // Add your event listeners here
-        console.log('event')
     }
 }

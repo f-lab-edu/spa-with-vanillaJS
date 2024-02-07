@@ -1,6 +1,6 @@
 import Card from '../components/Card.js'
 import Component from '../core/Components.js'
-import '../assets/style/pages/Home.css'
+import styles from './Home.module.css'
 
 
 export default class HomePage extends Component{
@@ -8,16 +8,19 @@ export default class HomePage extends Component{
         $app.innerHTML = '';
         super($app);
         this.render()
-        for (let i = 0; i < 5; i++) {
-            this.card = new Card({ $app: this.$app, id: i });
-        }
     }
 
     template() {
         return `
-            <h1 id = "develope">
+            <h1 class = "${styles.develop}">
                 개발
             </h1>
         `
+    }
+
+    setEvent() {
+        for (let i = 0; i < 5; i++) {
+            this.card = new Card({ $app: this.$app, id: i });
+        }
     }
 }

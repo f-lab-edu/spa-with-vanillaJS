@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  height: 25%;
+  padding-bottom: 5%;
+}
+
+.contents {
+  display: flex;
+  transition: color 0.5s;
+}
+
+.contents:link,
+.contents:visited {
+  text-decoration: none;
+  color: rgb(67, 72, 75);
+}
+
+.contents:hover {
+  color: #3182f6;
+}
+
+.thumbnail {
+  width: 250px;
+  height: 250px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+.posts {
+  margin-left: 5%;
+}
