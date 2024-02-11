@@ -1,9 +1,9 @@
-import styles from './Header.module.css'
+import styles from '../assets/css/Header.module.css'
 import Component from '../core/Components.js'
 
 export default class Header extends Component {
-    constructor({ $app }) {
-        super($app);
+    constructor({ $element }) {
+        super($element);
         this.setup();
         this.render();
     }
@@ -24,7 +24,6 @@ export default class Header extends Component {
     setEvent() {
         const logoBtn = document.querySelector('div.' + styles.leftLogo);
         logoBtn.addEventListener('click', (e) => {
-            console.log('clicked')
             const currentPath = window.location.pathname;
             if (currentPath !== "/") {
                 window.history.pushState(null, '', '/');

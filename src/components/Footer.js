@@ -1,10 +1,9 @@
-import styles from './Footer.module.css'
+import styles from '../assets/css/Footer.module.css'
 import Component from '../core/Components.js'
 
 export default class Footer extends Component{
-   constructor({ $app }) {
-        super($app);
-        this.setup();
+   constructor({ $element }) {
+        super($element);
         this.render();
    }
     
@@ -32,8 +31,5 @@ export default class Footer extends Component{
         `;
     }
 
-    setEvent() {
-        
-    }
 }
 

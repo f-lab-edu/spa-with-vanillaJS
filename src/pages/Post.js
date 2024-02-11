@@ -1,4 +1,4 @@
-import styles from './Post.module.css'
+import styles from '../assets/css/Post.module.css'
 import Component from '../core/Components.js'
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
@@ -7,9 +7,9 @@ import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 
 export default class Post extends Component {
-    constructor({ $app }) {
-        $app.innerHTML = '';
-        super($app);
+    constructor({ $element }) {
+        $element.innerHTML = '';
+        super($element);
         this.id = window.location.pathname.split('/').pop();
         this.images = [Image0, Image1, Image2, Image3, Image4];
         this.setup();

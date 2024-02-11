@@ -1,4 +1,4 @@
-import styles from './Card.module.css'
+import styles from '../assets/css/Card.module.css'
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
@@ -7,8 +7,8 @@ import Image4 from '../assets/images/Winter.jpeg';
 import Component from '../core/Components.js'
 
 export default class Card extends Component {
-    constructor({ $app, id }) {
-        super($app);
+    constructor({ $element, id }) {
+        super($element);
         this.id = id;
         this.setup();
         this.render();
@@ -38,12 +38,10 @@ export default class Card extends Component {
   }
 
   setEvent() {
-    this.$app.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
+    this.$element.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
       window.history.pushState(null, '', `/posts/${this.id}`);
       const popStateEvent = new PopStateEvent('popstate', { state: null });
       dispatchEvent(popStateEvent);
     });
   }
-    
-    
 }

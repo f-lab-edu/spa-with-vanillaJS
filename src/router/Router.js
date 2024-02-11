@@ -39,23 +39,21 @@ export default class Router {
     }
 
     loadRoute(...urlSegs) {
-        console.log("urlSegs",urlSegs)
         const matchedRoute = this._matchUrlToRoute(urlSegs);
-        console.log('matching',matchedRoute)
         if (!matchedRoute) {
             throw new Error('Route not found');
         }
-        matchedRoute.callback();
+        matchedRoute.renderTemplate();
     }
 
     // 해당 경로 history에 push
     navigateTo(path) {
         const pathnameSplit = this._getCurrentURL();
         if (path !== pathnameSplit) {
-        window.history.pushState({}, '', path);
+            window.history.pushState({}, '', path);
             this.loadRoute(path);
         } else {
-        console.log('no render')
+            console.log('no render')
         }
         
     }
