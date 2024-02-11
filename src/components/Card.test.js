@@ -16,4 +16,9 @@ describe('페이지 이동 동작 확인', () => {
         document.body.removeChild(app);
     });
 
+    //컴포넌트 랜더링 테스트
+
+    //페이지별 id 전달 테스트
+    
+
 });

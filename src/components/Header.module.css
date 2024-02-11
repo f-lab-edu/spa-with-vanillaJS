@@ -5,21 +5,22 @@
   border-bottom: 1px solid #e2e2e2;
 }
 
-#left-logo {
+.leftLogo {
   align-self: flex-start;
   font-size: larger;
 }
-#left-logo:link,
-#left-logo:visited {
+
+.leftLogo:link,
+.leftLogo:visited {
   text-decoration: none;
   color: rgb(67, 72, 75);
 }
 
-#left-logo > span {
+.leftLogo > span {
   font-weight: 800;
 }
 
-#right-menu {
+.rightMenu {
   display: flex;
   justify-content: flex-end;
   gap: 15px;

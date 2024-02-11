@@ -4,9 +4,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta http-equiv="refresh" content="0;URL=http://localhost:9000"> -->
         <title>Toss Vanilla SPA</title>
     </head>
     <body style="margin:0px">
         <main class="app"></main>
+        <script>
+            window.onerror = function () {
+                    // router.navigate('/about');
+                    console.log("error")
+                    return true; // Prevents default browser error handling
+                };
+        </script>
     </body>
 </html>

@@ -1,27 +1,37 @@
-import '../assets/style/components/Header.css'
+import styles from './Header.module.css'
+import Component from '../core/Components.js'
 
-const Header = ({ app }) => {
-	const content = document.createElement('div');
-    app.appendChild(content);
+export default class Header extends Component {
+    constructor({ $app }) {
+        super($app);
+        this.setup();
+        this.render();
+    }
 
-    const render = () => {
-        content.innerHTML = `
-            <header class = "menu">
-                <a href = "/" id="left-logo"> <span>Tost</span>tech</a>
-                <div id = "right-menu">
-                    <div id="page">디자인</div>
-                    <div id="page">개발</div>
-                    <div id="page">채용 바로가기</div>
+    template() {
+        return `
+            <header class = "${styles.menu}">
+                <div class = "${styles.leftLogo}"> <span>Tost</span>tech</div>
+                <div class = "${styles.rightMenu}">
+                    <div>디자인</div>
+                    <div>개발</div>
+                    <div>채용 바로가기</div>
                 </div>  
             </header>
-        `
-        content.querySelector('a').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.history.pushState(null, '', '/');
-            const popStateEvent = new PopStateEvent('popstate', { state: null });
-            dispatchEvent(popStateEvent);
+        `;
+    }
+
+    setEvent() {
+        const logoBtn = document.querySelector('div.' + styles.leftLogo);
+        logoBtn.addEventListener('click', (e) => {
+            console.log('clicked')
+            const currentPath = window.location.pathname;
+            if (currentPath !== "/") {
+                window.history.pushState(null, '', '/');
+                const popStateEvent = new PopStateEvent('popstate', { state: null });
+                dispatchEvent(popStateEvent);
+            }
         });
     }
-    render();
 }
-export default Header;
+

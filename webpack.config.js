@@ -12,6 +12,11 @@ export default {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),  // src 폴더를 '@'로 alias 설정
+    },
+  },
     module: {
         rules: [
         {
