@@ -5,10 +5,12 @@ import styles from '../assets/css/Home.module.css'
 const NUMBER_OF_CARD = 5;
 
 export default class HomePage extends Component{
-    constructor({ $element }) {
+    constructor({ $element,router }) {
         $element.innerHTML = '';
         super($element);
+        this.router = router;
         this.render()
+        
     }
 
     template() {
@@ -21,7 +23,7 @@ export default class HomePage extends Component{
 
     setTemplate() {
         for (let i = 0; i < NUMBER_OF_CARD; i++) {
-            this.card = new Card({ $element: this.$element, id: i });
+            this.card = new Card({ $element: this.$element, router:this.router, id: i });
         }
     }
 }

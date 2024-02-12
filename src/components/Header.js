@@ -2,8 +2,9 @@ import styles from '../assets/css/Header.module.css'
 import Component from '../core/Components.js'
 
 export default class Header extends Component {
-    constructor({ $element }) {
+    constructor({ $element,router }) {
         super($element);
+        this.router = router;
         this.setup();
         this.render();
     }
@@ -24,12 +25,7 @@ export default class Header extends Component {
     setEvent() {
         const logoBtn = document.querySelector('div.' + styles.leftLogo);
         logoBtn.addEventListener('click', (e) => {
-            const currentPath = window.location.pathname;
-            if (currentPath !== "/") {
-                window.history.pushState(null, '', '/');
-                const popStateEvent = new PopStateEvent('popstate', { state: null });
-                dispatchEvent(popStateEvent);
-            }
+            this.router.navigateTo('/')
         });
     }
 }

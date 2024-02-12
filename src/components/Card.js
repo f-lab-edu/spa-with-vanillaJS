@@ -4,12 +4,13 @@ import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
-import Component from '../core/Components.js'
+import Component from '../core/Components.js';
 
 export default class Card extends Component {
-    constructor({ $element, id }) {
+    constructor({ $element, router, id }) {
         super($element);
         this.id = id;
+        this.router = router;
         this.setup();
         this.render();
     }
@@ -39,9 +40,7 @@ export default class Card extends Component {
 
   setEvent() {
     this.$element.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
-      window.history.pushState(null, '', `/posts/${this.id}`);
-      const popStateEvent = new PopStateEvent('popstate', { state: null });
-      dispatchEvent(popStateEvent);
+      this.router.navigateTo(`/posts/${this.id}`)
     });
   }
 }

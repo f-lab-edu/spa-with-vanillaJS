@@ -1,13 +1,12 @@
 export default class Component {
     // 생성자 -> 할당된 $app에 컴포넌트를 삽입할 div 생성
     constructor ($element) { 
-        this.$element = $element;
         this.$container = document.createElement('div');
         $element.appendChild(this.$container);
         this.$element = this.$container;
     }
 
-    // 탬플릿에 대한 추가 세팅 함수
+    // 탬플릿에 대한 추가 컴포넌트 세팅 함수
     setTemplate() { }
 
     // 아벤트 셋업
