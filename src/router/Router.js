@@ -1,7 +1,7 @@
 export default class Router {
     constructor() {
         this.routes = [];
-
+        this.data = {};
         // history api에서 경로가 변경될 경우 새로고침 없이 재랜더링 수행
         window.addEventListener('popstate', () => this.loadInitialRoute());
     }
@@ -16,26 +16,39 @@ export default class Router {
         return path;
     }
 
+    _parseQueryParameters() {
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.search);
+        for (let param of params) {
+            this.data[param[0]] = param[1];
+        }
+    }
+
     // 동적으로 생성된 routes에서 해당 경로가 존재하는지 확인
     _matchUrlToRoute(urlSegs) {
-        const matchedRoute = this.routes.find(route => {
-        const routePathSegments = route.path.split('/').filter(Boolean);
-        const currentPathSegments = urlSegs.filter(Boolean);
+        try {
+            const matchedRoute = this.routes.find(route => {
+            const routePathSegments = route.path.split('/').filter(Boolean);
+            const currentPathSegments = urlSegs.filter(Boolean);
 
-        if (routePathSegments.length !== currentPathSegments.length) {
+            if (routePathSegments.length !== currentPathSegments.length) {
+                return false;
+            }
+
+            return routePathSegments.every((routePathSegment, index) => {
+                return routePathSegment.startsWith(':') || routePathSegment === currentPathSegments[index];
+                });
+            });
+            return matchedRoute;
+        } catch {
             return false;
         }
-
-        return routePathSegments.every((routePathSegment, index) => {
-            return routePathSegment.startsWith(':') || routePathSegment === currentPathSegments[index];
-            });
-        });
-
-        return matchedRoute;
+        
     }
 
     // path 추출 및 해당 경로에 대한 컴포넌트 랜더링
     loadInitialRoute() {
+        this._parseQueryParameters();
         const pathnameSplit = this._getCurrentURL().split('/');
         const pathSegs = pathnameSplit.length > 1 ? pathnameSplit.slice(1) : '';
         this._loadRoute(...pathSegs);
@@ -44,8 +57,8 @@ export default class Router {
     _loadRoute(...urlSegs) {
         const matchedRoute = this._matchUrlToRoute(urlSegs);
         if (!matchedRoute) {
-            console.log("match fail")
-            this.navigateTo('/')
+            const routeWithNullPath = this.routes.find(route => route.path === null);
+            routeWithNullPath.renderTemplate();
             
         } else {
             matchedRoute.renderTemplate();

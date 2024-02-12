@@ -7,9 +7,10 @@ import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 
 export default class Post extends Component {
-    constructor({ $element }) {
+    constructor({ $element, router }) {
         $element.innerHTML = '';
         super($element);
+        this.router = router;
         this.id = window.location.pathname.split('/').pop();
         this.images = [Image0, Image1, Image2, Image3, Image4];
         this.setup();
@@ -27,6 +28,7 @@ export default class Post extends Component {
         return `
             <div class = "${styles.postContent}">
                 <img class = "${styles.titleImage}" src="${this.state.img}" />
+                <div class = "${styles.datas}"></div>
                 <h1 class = "${styles.postTitle}">${this.state.title}</h1>
                 <p class = "${styles.postSubContent}">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -60,5 +62,20 @@ export default class Post extends Component {
             </p>
             </div>
         `
+    }
+
+    setEvent() {
+        let datasDiv = this.$element.querySelector('div.' + styles.datas);
+        if (datasDiv) {
+            let html = '';
+            for (let key in this.router.data) {
+                let value = this.router.data[key];
+                // Add the key and value to the HTML string
+                html += `<p>${key}: ${value}</p>`;
+            }
+            // Set the HTML of the div
+            datasDiv.innerHTML = html;
+
+        }
     }
 }
