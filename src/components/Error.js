@@ -10,7 +10,7 @@ export default class Error extends Component{
    template() {
         return `
             <h1>잘못된 경로입니다.</h1>
-            <div> 홈으로 돌아가기</div>
+            <a href="/"> 홈으로 돌아가기</a>
         `;
     }
 
