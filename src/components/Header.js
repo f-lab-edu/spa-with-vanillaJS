@@ -23,8 +23,7 @@ export default class Header extends Component {
     }
 
     setEvent() {
-        const logoBtn = document.querySelector('div.' + styles.leftLogo);
-        logoBtn.addEventListener('click', (e) => {
+            this.$element.querySelector('div.' + styles.leftLogo).addEventListener('click', () => {
             this.router.navigateTo('/')
         });
     }

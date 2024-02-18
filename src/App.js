@@ -20,7 +20,7 @@ export default class App extends Component {
     `;
   }
     setTemplate() {
-      this.router = new routes(this.$element.querySelector('main'));
+      this.router = routes(this.$element.querySelector('main'));
       this.header = new Header({ $element: this.$element.querySelector('header'),router:this.router });
       this.footer = new Footer({ $element: this.$element.querySelector('footer') });
     }

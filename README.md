@@ -13,9 +13,11 @@ Vanilla Javascript를 활용하여 SPA와 같이 새로고침 없이 화면이 �
 
 ### 개발 과정
 
-[1일차. Vanilla Javascript로 SPA 구현하기](https://lofty-tang-eba.notion.site/Vanilla-Javascript-SPA-1-e3ad3cd22dab4650b084f29c39c3e74b?pvs=4)
+[1주차. Vanilla Javascript로 SPA 구현하기](https://lofty-tang-eba.notion.site/Vanilla-Javascript-SPA-1-e3ad3cd22dab4650b084f29c39c3e74b?pvs=4)
 
-[2일차. Vanilla Javascript로 SPA 구현하기](https://www.notion.so/Vanilla-Javascript-SPA-2-ee62a8984c3b4279b467d6ea73cbd794?pvs=4)
+[2주차. Vanilla Javascript로 SPA 구현하기](https://lofty-tang-eba.notion.site/Vanilla-Javascript-SPA-2-ee62a8984c3b4279b467d6ea73cbd794?pvs=4)
+
+[3주차. Vanilla Javascript로 SPA 구현하기](https://lofty-tang-eba.notion.site/Vanilla-Javascript-SPA-3-84407c7cfacc45c1b1edeb4768089327?pvs=4)
 
 ### 파일 구성
 
@@ -57,13 +59,13 @@ src
 
 ## 구현 기능 정리
 
-**1일차**
+**1주차**
 
 - 새로고침 없이 route에 따른 component 랜더링
 - javascript에서의 html render
 - 컴포넌트 재사용
 
-**2일차**
+**2주차**
 
 - 기존의 hash 라우팅 -> history API로 변경
 - 동적으로 라우팅할 수 있도록 하기
@@ -72,7 +74,7 @@ src
 - 스타일 id -> class 교체
 - 일부 id 이벤트 교체
 
-**3일차**
+**3주차**
 
 - 새로고침 시 404 에러 발생 문제 해결
 - $app 매개변수 이름 $element로 수정

@@ -1,9 +1,5 @@
-import { fireEvent } from '@testing-library/dom';
-import App from './App.js';
 import routes from './routes.js'
-import Header from './components/Header.js'
-import Footer from './components/Footer.js'
-import styles from '../assets/css/Card.module.css'
+
 
 describe('App 페이지 확인', () => {
     test('error 이동 테스트', () => {
