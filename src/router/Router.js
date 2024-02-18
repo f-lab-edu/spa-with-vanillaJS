@@ -2,7 +2,7 @@ export default class Router {
     constructor() {
         this.routes = [];
         this.data = {};
-        
+
         // history api에서 경로가 변경될 경우 새로고침 없이 재랜더링 수행
         window.addEventListener('popstate', () => this.loadInitialRoute());
     }
@@ -11,6 +11,10 @@ export default class Router {
         this.routes.push({ path, renderTemplate });
     }
 
+    getData() {
+        return this.data;
+    }
+    
     // 현재 url 경로 추출
     _getCurrentURL() {
         const path = window.location.pathname;

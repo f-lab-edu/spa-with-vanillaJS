@@ -1,8 +1,7 @@
-import styles from '../assets/css/Footer.module.css'
 import Component from '../core/Components.js'
 
 export default class Error extends Component{
-   constructor({ $element,router }) {
+   constructor({ $element}) {
         super($element);
         this.render();
    }
