@@ -1,26 +1,27 @@
-
+// App.js
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
-import HomePage from './pages/Home.js'
-import Post from './pages/Post.js'
+import routes from './routes.js'
+import Component from './core/Components.js'
+import styles from './assets/css/App.module.css'
 
-const App = (app) => {
-    const render = () => {
-        app.innerHTML = '';
-        const page = window.location.hash;
-        new Header({ app });
-        if (page.startsWith('#/post/')) {
-            const route = parseInt(page.replace('#/post/', ''));
-            new Post({ app,route });
-        } else {
-            new HomePage({ app });
-        }
-        new Footer({ app });
+export default class App extends Component {
+    constructor($element) {
+        $element.innerHTML = '';
+        super($element);
+        this.render();
+  }
+
+  template() {
+    return `
+      <header></header>
+      <main class = "${styles.appMain}"></main>
+      <footer></footer>
+    `;
+  }
+    setTemplate() {
+      this.router = routes(this.$element.querySelector('main'));
+      this.header = new Header({ $element: this.$element.querySelector('header'),router:this.router });
+      this.footer = new Footer({ $element: this.$element.querySelector('footer') });
     }
-
-    window.addEventListener('hashchange', render);
-    window.onpopstate = render;
-    render();
 }
-
-export default App;

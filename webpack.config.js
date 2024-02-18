@@ -9,9 +9,15 @@ export default {
     mode:"development",
     entry: './src/index.js',
     output: {
-        filename: 'main.js',
+        filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
+    resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),  // src 폴더를 '@'로 alias 설정
+    },
+  },
     module: {
         rules: [
         {
@@ -46,7 +52,8 @@ export default {
         }),
     ],
     devServer: {
-  static: path.join(__dirname, "dist"),
-  port: 9000
+        historyApiFallback: true,
+        static: path.join(__dirname, "dist"),
+        port: 9000
 }
 };

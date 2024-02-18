@@ -1,23 +1,29 @@
 import Card from '../components/Card.js'
-import '../assets/style/pages/Home.css'
+import Component from '../core/Components.js'
+import styles from '../assets/css/Home.module.css'
 
-const HomePage = ({ app }) => {
-    const content = document.createElement('div')
-    content.className = 'content';
-    app.appendChild(content);
+const NUMBER_OF_CARD = 5;
 
-    const render = () => {
-        content.innerHTML = `
-            <h1 id = "develope">
+export default class HomePage extends Component{
+    constructor({ $element,router }) {
+        $element.innerHTML = '';
+        super($element);
+        this.router = router;
+        this.render()
+        
+    }
+
+    template() {
+        return `
+            <h1 class = "${styles.develop}">
                 개발
             </h1>
         `
     }
-    render();
-    
-    for(let i = 0; i < 5; i++) {
-        const card = new Card({ app:content, route:i });
+
+    setTemplate() {
+        for (let i = 0; i < NUMBER_OF_CARD; i++) {
+            this.card = new Card({ $element: this.$element, router:this.router, id: i });
+        }
     }
 }
-
-export default HomePage;
