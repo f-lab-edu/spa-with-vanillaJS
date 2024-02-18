@@ -4,7 +4,7 @@ import Router from './Router.js'
 // import styles from '../assets/css/Card.module.css'
 
 describe('Router 모듈 동작 확인', () => {
-    test('컴포넌트 정상 랜더링 테스트', () => {
+    test('라우터에 따른 랜더 함수 실행 테스트', () => {
         console.log = jest.fn();
         const router = new Router;
         router.addRoute('', () => console.log("initial route"));

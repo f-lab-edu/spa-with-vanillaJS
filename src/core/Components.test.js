@@ -1,6 +1,6 @@
 import Component from './Components.js'
 describe('Components 모듈 동작 확인', () => {
-    test('컴포넌트 정상 랜더링 테스트', () => {
+    test('컴포넌트 생성 동작 테스트', () => {
         class TestComponent extends Component{
             constructor( $element ) {
                 super($element);
