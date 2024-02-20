@@ -1,6 +1,5 @@
 import routes from './routes.js'
 
-
 describe('App 페이지 확인', () => {
     test('error 이동 테스트', () => {
          delete window.location;

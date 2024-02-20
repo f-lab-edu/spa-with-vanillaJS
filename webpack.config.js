@@ -20,6 +20,12 @@ export default {
   },
     module: {
         rules: [
+        { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+        {
+            test: /\.js$/,
+            enforce:"pre",
+            loader: "source-map-loader"
+        },
         {
             test: /\.css$/,
             use: ['style-loader', 'css-loader'],
