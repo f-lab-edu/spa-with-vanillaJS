@@ -1,15 +1,25 @@
 import styles from '../assets/css/Header.module.css'
-import Component from '../core/Components.js'
+import Component from '../core/Components'
+
+interface HeaderProps {
+  $element: HTMLElement;
+  router: any; // Replace 'any' with the actual type of your router
+}
 
 export default class Header extends Component {
-    constructor({ $element,router }) {
+    private router: any; // Replace 'any' with the actual type of your router
+
+    constructor({ $element, router }: HeaderProps) {
         super($element);
         this.router = router;
+    }
+
+    setComponent(): void {
         this.setup();
         this.render();
     }
 
-    template() {
+    template(): string {
         return `
             <header class = "${styles.menu}">
                 <div class = "${styles.leftLogo}"> <span>Tost</span>tech</div>
@@ -22,10 +32,9 @@ export default class Header extends Component {
         `;
     }
 
-    setEvent() {
-            this.$element.querySelector('div.' + styles.leftLogo).addEventListener('click', () => {
+    setEvent(): void {
+        this.$element.querySelector('div.' + styles.leftLogo).addEventListener('click', () => {
             this.router.navigateTo('/')
         });
     }
 }
-

@@ -1,4 +1,12 @@
+interface Route {
+  path: string;
+  renderTemplate: () => void;
+}
+
 export default class Router {
+    private routes: Route[];
+    private data: { [key: string]: string };
+
     constructor() {
         this.routes = [];
         this.data = {};
@@ -7,30 +15,30 @@ export default class Router {
         window.addEventListener('popstate', () => this.loadInitialRoute());
     }
 
-    addRoute(path, renderTemplate) {
+    addRoute(path: string, renderTemplate: () => void): void {
         this.routes.push({ path, renderTemplate });
     }
 
-    getData() {
+    getData(): { [key: string]: string } {
         return this.data;
     }
     
     // 현재 url 경로 추출
-    _getCurrentURL() {
+    private _getCurrentURL(): string {
         const path = window.location.pathname;
         return path;
     }
 
-    _parseQueryParameters() {
+    private _parseQueryParameters(): void {
         const url = new URL(window.location.href);
         const params = new URLSearchParams(url.search);
-        for (let param of params) {
-            this.data[param[0]] = param[1];
-        }
+        params.forEach((value, key) => {
+            this.data[key] = value;
+        })
     }
 
     // 동적으로 생성된 routes에서 해당 경로가 존재하는지 확인
-    _matchUrlToRoute(urlSegs) {
+    private _matchUrlToRoute(urlSegs: string[]): Route | undefined {
         try {
             const matchedRoute = this.routes.find(route => {
             const routePathSegments = route.path.split('/').filter(Boolean);
@@ -46,24 +54,24 @@ export default class Router {
             });
             return matchedRoute;
         } catch {
-            return false;
+            return undefined;
         }
         
     }
 
     // path 추출 및 해당 경로에 대한 컴포넌트 랜더링
-    loadInitialRoute() {
+    loadInitialRoute(): void {
         this._parseQueryParameters();
         const pathnameSplit = this._getCurrentURL().split('/');
-        const pathSegs = pathnameSplit.length > 1 ? pathnameSplit.slice(1) : '';
+        const pathSegs = pathnameSplit.length > 1 ? pathnameSplit.slice(1) : [];
         this._loadRoute(...pathSegs);
     }
 
-    _loadRoute(...urlSegs) {
+    private _loadRoute(...urlSegs: string[]): void {
         const matchedRoute = this._matchUrlToRoute(urlSegs);
         if (!matchedRoute) {
             const routeWithNullPath = this.routes.find(route => route.path === null);
-            routeWithNullPath.renderTemplate();
+            routeWithNullPath?.renderTemplate();
             
         } else {
             matchedRoute.renderTemplate();
@@ -71,7 +79,7 @@ export default class Router {
     }
 
      // 해당 경로 history에 push
-    navigateTo(path) {
+    navigateTo(path: string): void {
         const pathnameSplit = this._getCurrentURL();
         if (path !== pathnameSplit) {
             window.history.pushState(null, '', path);

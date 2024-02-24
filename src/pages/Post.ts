@@ -1,13 +1,28 @@
 import styles from '../assets/css/Post.module.css'
-import Component from '../core/Components.js'
+import Component from '../core/Components'
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 
+interface PostProps {
+  $element: HTMLElement;
+  router: any; // Replace 'any' with the actual type of your router
+}
+
+interface PostState {
+  img: string;
+  title: string;
+}
+
 export default class Post extends Component {
-    constructor({ $element, router }) {
+    private router: any; // Replace 'any' with the actual type of your router
+    private id: string;
+    private images: string[];
+    private pageState: PostState;
+
+    constructor({ $element, router }: PostProps) {
         $element.innerHTML = '';
         super($element);
         this.router = router;
@@ -17,19 +32,19 @@ export default class Post extends Component {
         this.render()
     }
 
-    setup() {
-        this.state = {
-            img: this.images[this.id],
+    setup():void {
+        this.pageState = {
+            img: this.images[Number(this.id)],
             title: `이것은 ${this.id}번째 포스트 페이지입니다.`
         };
     }
 
-    template() {
+    template():string {
         return `
             <div class = "${styles.postContent}">
-                <img class = "${styles.titleImage}" src="${this.state.img}" />
+                <img class = "${styles.titleImage}" src="${this.pageState.img}" />
                 <div class = "${styles.datas}"></div>
-                <h1 class = "${styles.postTitle}">${this.state.title}</h1>
+                <h1 class = "${styles.postTitle}">${this.pageState.title}</h1>
                 <p class = "${styles.postSubContent}">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 <br/>
@@ -64,7 +79,7 @@ export default class Post extends Component {
         `
     }
 
-    setEvent() {
+    setEvent():void {
         let datasDiv = this.$element.querySelector('div.' + styles.datas);
         if (datasDiv) {
             let html = '';

@@ -1,6 +1,6 @@
 // import { fireEvent } from '@testing-library/dom';
 // import Post from './Post.js';
-import Router from './Router.js'
+import Router from './Router'
 // import styles from '../assets/css/Card.module.css'
 
 describe('Router 모듈 동작 확인', () => {
@@ -12,13 +12,13 @@ describe('Router 모듈 동작 확인', () => {
         router.loadInitialRoute();
         
         delete window.location;
-        window.location = { pathname: '/' };
+        (window as any).location = { pathname: '/' };
 
         expect(console.log).toHaveBeenCalledWith('initial route');
     });
 
     test('에러 페이지 라우팅 테스트', () => {
-        window.location = { href:'http://localhost:9000/' ,pathname: 'http://localhost:9000/' };
+        (window as any).location = { href:'http://localhost:9000/' ,pathname: 'http://localhost:9000/' };
         console.log = jest.fn();
         const router = new Router;
         router.addRoute('', () => console.log("initial route"));
@@ -27,13 +27,13 @@ describe('Router 모듈 동작 확인', () => {
         router.loadInitialRoute();
         
         delete window.location;
-        window.location = { href:'http://localhost:9000/noPageExist' ,pathname: 'http://localhost:9000/noPageExist' };
+        (window as any).location = { href:'http://localhost:9000/noPageExist' ,pathname: 'http://localhost:9000/noPageExist' };
 
         expect(console.log).toHaveBeenCalledWith('Error Page Render');
     });
 
     test('쿼리 스트링 테스트', () => {
-        window.location = { href:'http://localhost:9000/test?id=0&name=apple' ,pathname: 'http://localhost:9000/test?id=0&name=apple' };
+        (window as any).location = { href:'http://localhost:9000/test?id=0&name=apple' ,pathname: 'http://localhost:9000/test?id=0&name=apple' };
   
         const router = new Router;
         router.addRoute('', () => console.log("initial route"));

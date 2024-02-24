@@ -2,7 +2,7 @@
   "name": "vanillajs-to-typescript",
   "version": "1.0.0",
   "description": "Vanilla javascript SPA",
-  "main": "./src/index.js",
+  "main": "./src/index.ts",
   "type": "module",
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./webpack.config.js",
@@ -31,6 +31,7 @@
     "source-map-loader": "^5.0.0",
     "style-loader": "^3.3.4",
     "ts-jest": "^29.1.2",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4",

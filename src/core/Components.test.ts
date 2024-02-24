@@ -1,4 +1,4 @@
-import Component from './Components.js'
+import Component from './Components'
 describe('Components 모듈 동작 확인', () => {
     test('컴포넌트 생성 동작 테스트', () => {
         class TestComponent extends Component{
@@ -10,7 +10,7 @@ describe('Components 모듈 동작 확인', () => {
                 return`Test Component Render`
             }
         }
-        let $element = document.createElement('div');
+        const $element = document.createElement('div');
         const testComponent = new TestComponent($element);
         testComponent;
 

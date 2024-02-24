@@ -1,12 +1,14 @@
 import styles from '../assets/css/Footer.module.css'
-import Component from '../core/Components.js'
+import Component from '../core/Components'
 
 export default class Footer extends Component{
    constructor({ $element }) {
         super($element);
-        this.render();
+        
    }
-    
+    setComponent() {
+        this.render();
+    }
    template() {
         return `
             <footer class = "${styles.foot}">

@@ -1,4 +1,4 @@
-import Component from '../core/Components.js'
+import Component from '../core/Components'
 
 export default class Error extends Component{
    constructor({ $element}) {
