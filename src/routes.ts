@@ -5,9 +5,18 @@ import Router from './router/Router';
 
 const routes = ($element: HTMLElement): Router => {
   const router = new Router();
-  router.addRoute('', () => new HomePage({ $element, router }));
-  router.addRoute('/', () => new HomePage({ $element, router }));
-  router.addRoute('/posts/:id', () => new Post({ $element, router }));
+  router.addRoute('', () => {
+    const HomePageComponent = new HomePage({ $element, router });
+    HomePageComponent.setComponent();
+  });
+  router.addRoute('/', () => {
+    const HomePageComponent = new HomePage({ $element, router });
+    HomePageComponent.setComponent();
+  });
+  router.addRoute('/posts/:id', () => {
+    const PostPageComponent = new Post({ $element, router });
+    PostPageComponent.setComponent();
+  });
   router.addRoute(null, () => {
     const ErrorPage = new Error({ $element });
     ErrorPage.setComponent();

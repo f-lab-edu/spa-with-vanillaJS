@@ -29,10 +29,11 @@ export default class Post extends Component {
     this.router = router;
     this.id = window.location.pathname.split('/').pop();
     this.images = [Image0, Image1, Image2, Image3, Image4];
+  }
+  setComponent(): void {
     this.setup();
     this.render();
   }
-
   setup(): void {
     this.pageState = {
       img: this.images[Number(this.id)],

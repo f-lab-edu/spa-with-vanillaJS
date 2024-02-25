@@ -18,6 +18,9 @@ export default class HomePage extends Component {
     $element.innerHTML = '';
     super($element);
     this.router = router;
+  }
+
+  setComponent(): void {
     this.render();
   }
 
