@@ -8,14 +8,17 @@ export default abstract class Component {
     this.$element = this.$container;
   }
 
-  // 탬플릿에 대한 추가 컴포넌트 세팅 함수
-  protected setComponent(): void {}
+  protected setComponent(): void {
+    // 탬플릿에 대한 추가 컴포넌트 세팅 함수
+  }
 
-  // 탬플릿에 대한 추가 컴포넌트 세팅 함수
-  protected setTemplate(): void {}
+  protected setTemplate(): void {
+    // 탬플릿에 대한 추가 컴포넌트 세팅 함수
+  }
 
-  // 아벤트 셋업
-  protected setup(): void {}
+  protected setup(): void {
+    // 이벤트 셋업
+  }
 
   // 랜더링할 template 지정
   protected abstract template(): string;
@@ -27,8 +30,9 @@ export default abstract class Component {
     this.setEvent();
   }
 
-  // 랜더링 수행 이후 추가적으로 수행해야 할 작업
-  protected setEvent(): void {}
+  protected setEvent(): void {
+    // 랜더링 수행 이후 추가적으로 수행해야 할 작업
+  }
 
   protected setState(newState: object): void {
     this.state = { ...this.state, ...newState };
