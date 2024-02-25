@@ -1,4 +1,4 @@
-import styles from '../assets/css/Card.module.css'
+import styles from '../assets/css/Card.module.css';
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
@@ -8,39 +8,38 @@ import Component from '../core/Components';
 import Router from '../router/Router';
 
 interface CardProps {
-  $element: HTMLElement;
-  router: Router;
-  id: number;
+  $element: HTMLElement
+  router: Router
+  id: number
 }
 
 export default class Card extends Component {
-    private id: number;
-    private router: Router;
-    private images: string[];
-    private img: HTMLImageElement;
+  private id: number;
+  private router: Router;
+  private images: string[];
+  private img: HTMLImageElement;
 
-    constructor({ $element, router, id }: CardProps) {
-        super($element);
-        this.id = id;
-        this.router = router;
-        
-    }
-  
-  setComponent():void {
+  constructor({ $element, router, id }: CardProps) {
+    super($element);
+    this.id = id;
+    this.router = router;
+  }
+
+  setComponent(): void {
     this.setup();
     this.render();
   }
 
-    setup():void {
-        this.images = [Image0, Image1, Image2, Image3, Image4];
-        this.img = new Image();
-        this.img.className = 'thumbnail';
-        this.img.className = styles.thumbnail;
-        this.img.src = this.images[this.id];
-    }
+  setup(): void {
+    this.images = [Image0, Image1, Image2, Image3, Image4];
+    this.img = new Image();
+    this.img.className = 'thumbnail';
+    this.img.className = styles.thumbnail;
+    this.img.src = this.images[this.id];
+  }
 
-    template():string {
-        return `
+  template(): string {
+    return `
             <div class="${styles.container}">
                 <div class="${styles.contents}">
                     ${this.img.outerHTML}
@@ -52,11 +51,13 @@ export default class Card extends Component {
                 </div>
             </div>
         `;
-    }
+  }
 
-    setEvent():void {
-        this.$element.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
-            this.router.navigateTo(`/posts/${this.id}`)
-        });
-    }
+  setEvent(): void {
+    this.$element
+      .querySelector('div.' + styles.contents)
+      .addEventListener('click', (e) => {
+        this.router.navigateTo(`/posts/${this.id}`);
+      });
+  }
 }

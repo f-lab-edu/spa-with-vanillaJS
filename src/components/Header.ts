@@ -1,26 +1,26 @@
-import styles from '../assets/css/Header.module.css'
-import Component from '../core/Components'
+import styles from '../assets/css/Header.module.css';
+import Component from '../core/Components';
 import Router from '../router/Router';
 
 interface HeaderProps {
   $element: HTMLElement;
-  router: Router;
+  router: Router
 }
 
 export default class Header extends Component {
-    private router: Router; 
-    constructor({ $element, router }: HeaderProps) {
-        super($element);
-        this.router = router;
-    }
+  private router: Router;
+  constructor({ $element, router }: HeaderProps) {
+    super($element);
+    this.router = router;
+  }
 
-    setComponent(): void {
-        this.setup();
-        this.render();
-    }
+  setComponent(): void {
+    this.setup();
+    this.render();
+  }
 
-    template(): string {
-        return `
+  template(): string {
+    return `
             <header class = "${styles.menu}">
                 <div class = "${styles.leftLogo}"> <span>Tost</span>tech</div>
                 <div class = "${styles.rightMenu}">
@@ -30,11 +30,13 @@ export default class Header extends Component {
                 </div>  
             </header>
         `;
-    }
+  }
 
-    setEvent(): void {
-        this.$element.querySelector('div.' + styles.leftLogo).addEventListener('click', () => {
-            this.router.navigateTo('/')
-        });
-    }
+  setEvent(): void {
+    this.$element
+      .querySelector('div.' + styles.leftLogo)
+      .addEventListener('click', () => {
+        this.router.navigateTo('/');
+      });
+  }
 }

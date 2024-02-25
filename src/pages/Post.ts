@@ -1,5 +1,5 @@
-import styles from '../assets/css/Post.module.css'
-import Component from '../core/Components'
+import styles from '../assets/css/Post.module.css';
+import Component from '../core/Components';
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
@@ -9,7 +9,7 @@ import Router from '../router/Router';
 
 interface PostProps {
   $element: HTMLElement;
-  router: Router; 
+  router: Router;
 }
 
 interface PostState {
@@ -18,30 +18,30 @@ interface PostState {
 }
 
 export default class Post extends Component {
-    private router: Router;
-    private id: string;
-    private images: string[];
-    private pageState: PostState;
+  private router: Router;
+  private id: string;
+  private images: string[];
+  private pageState: PostState;
 
-    constructor({ $element, router }: PostProps) {
-        $element.innerHTML = '';
-        super($element);
-        this.router = router;
-        this.id = window.location.pathname.split('/').pop();
-        this.images = [Image0, Image1, Image2, Image3, Image4];
-        this.setup();
-        this.render()
-    }
+  constructor({ $element, router }: PostProps) {
+    $element.innerHTML = '';
+    super($element);
+    this.router = router;
+    this.id = window.location.pathname.split('/').pop();
+    this.images = [Image0, Image1, Image2, Image3, Image4];
+    this.setup();
+    this.render();
+  }
 
-    setup():void {
-        this.pageState = {
-            img: this.images[Number(this.id)],
-            title: `이것은 ${this.id}번째 포스트 페이지입니다.`
-        };
-    }
+  setup(): void {
+    this.pageState = {
+      img: this.images[Number(this.id)],
+      title: `이것은 ${this.id}번째 포스트 페이지입니다.`,
+    };
+  }
 
-    template():string {
-        return `
+  template(): string {
+    return `
             <div class = "${styles.postContent}">
                 <img class = "${styles.titleImage}" src="${this.pageState.img}" />
                 <div class = "${styles.datas}"></div>
@@ -77,18 +77,18 @@ export default class Post extends Component {
                 Aperiam deleniti molestiae hic porro! Harum voluptatem eligendi odio voluptate quis, earum quidem nihil, ullam maiores sed optio deserunt praesentium ipsam minima? Earum harum eveniet ut delectus qui tenetur esse?
             </p>
             </div>
-        `
-    }
+        `;
+  }
 
-    setEvent():void {
-        const datasDiv = this.$element.querySelector('div.' + styles.datas);
-        if (datasDiv) {
-            let html = '';
-            for (let key in this.router.data) {
-                let value = this.router.data[key];
-                html += `<p>${key}: ${value}</p>`;
-            }
-            datasDiv.innerHTML = html;
-        }
+  setEvent(): void {
+    const datasDiv = this.$element.querySelector('div.' + styles.datas);
+    if (datasDiv) {
+      let html = '';
+      for (let key in this.router.data) {
+        let value = this.router.data[key];
+        html += `<p>${key}: ${value}</p>`;
+      }
+      datasDiv.innerHTML = html;
     }
+  }
 }

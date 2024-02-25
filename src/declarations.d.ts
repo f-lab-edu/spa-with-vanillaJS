@@ -4,6 +4,6 @@ declare module '*.module.css' {
 }
 
 declare module '*.jpeg' {
-  const src: string;
+  const src: string
   export default src;
 }
