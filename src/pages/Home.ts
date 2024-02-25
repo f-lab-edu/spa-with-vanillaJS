@@ -6,8 +6,8 @@ import Router from '../router/Router';
 const NUMBER_OF_CARD = 5;
 
 interface HomePageProps {
-  $element: HTMLElement
-  router: Router
+  $element: HTMLElement;
+  router: Router;
 }
 
 export default class HomePage extends Component {
