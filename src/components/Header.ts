@@ -1,14 +1,14 @@
 import styles from '../assets/css/Header.module.css'
 import Component from '../core/Components'
+import Router from '../router/Router';
 
 interface HeaderProps {
   $element: HTMLElement;
-  router: any; // Replace 'any' with the actual type of your router
+  router: Router;
 }
 
 export default class Header extends Component {
-    private router: any; // Replace 'any' with the actual type of your router
-
+    private router: Router; 
     constructor({ $element, router }: HeaderProps) {
         super($element);
         this.router = router;

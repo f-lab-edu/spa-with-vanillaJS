@@ -5,16 +5,17 @@ import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
 import Component from '../core/Components';
+import Router from '../router/Router';
 
 interface CardProps {
   $element: HTMLElement;
-  router: any; // Replace 'any' with the actual type of your router
+  router: Router;
   id: number;
 }
 
 export default class Card extends Component {
     private id: number;
-    private router: any; // Replace 'any' with the actual type of your router
+    private router: Router;
     private images: string[];
     private img: HTMLImageElement;
 
@@ -25,12 +26,12 @@ export default class Card extends Component {
         
     }
   
-  setComponent() {
+  setComponent():void {
     this.setup();
     this.render();
   }
 
-    setup() {
+    setup():void {
         this.images = [Image0, Image1, Image2, Image3, Image4];
         this.img = new Image();
         this.img.className = 'thumbnail';
@@ -38,7 +39,7 @@ export default class Card extends Component {
         this.img.src = this.images[this.id];
     }
 
-    template() {
+    template():string {
         return `
             <div class="${styles.container}">
                 <div class="${styles.contents}">
@@ -53,7 +54,7 @@ export default class Card extends Component {
         `;
     }
 
-    setEvent() {
+    setEvent():void {
         this.$element.querySelector('div.' + styles.contents).addEventListener('click', (e) => {
             this.router.navigateTo(`/posts/${this.id}`)
         });

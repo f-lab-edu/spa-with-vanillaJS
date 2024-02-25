@@ -5,10 +5,11 @@ import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
+import Router from '../router/Router';
 
 interface PostProps {
   $element: HTMLElement;
-  router: any; // Replace 'any' with the actual type of your router
+  router: Router; 
 }
 
 interface PostState {
@@ -17,7 +18,7 @@ interface PostState {
 }
 
 export default class Post extends Component {
-    private router: any; // Replace 'any' with the actual type of your router
+    private router: Router;
     private id: string;
     private images: string[];
     private pageState: PostState;
@@ -80,17 +81,14 @@ export default class Post extends Component {
     }
 
     setEvent():void {
-        let datasDiv = this.$element.querySelector('div.' + styles.datas);
+        const datasDiv = this.$element.querySelector('div.' + styles.datas);
         if (datasDiv) {
             let html = '';
             for (let key in this.router.data) {
                 let value = this.router.data[key];
-                // Add the key and value to the HTML string
                 html += `<p>${key}: ${value}</p>`;
             }
-            // Set the HTML of the div
             datasDiv.innerHTML = html;
-
         }
     }
 }

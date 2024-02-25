@@ -5,7 +5,7 @@ interface Route {
 
 export default class Router {
     private routes: Route[];
-    private data: { [key: string]: string };
+    public data: { [key: string]: string };
 
     constructor() {
         this.routes = [];
@@ -15,11 +15,11 @@ export default class Router {
         window.addEventListener('popstate', () => this.loadInitialRoute());
     }
 
-    addRoute(path: string, renderTemplate: () => void): void {
+    public addRoute(path: string, renderTemplate: () => void): void {
         this.routes.push({ path, renderTemplate });
     }
 
-    getData(): { [key: string]: string } {
+    public getData(): { [key: string]: string } {
         return this.data;
     }
     
@@ -56,11 +56,10 @@ export default class Router {
         } catch {
             return undefined;
         }
-        
     }
 
     // path 추출 및 해당 경로에 대한 컴포넌트 랜더링
-    loadInitialRoute(): void {
+    public loadInitialRoute(): void {
         this._parseQueryParameters();
         const pathnameSplit = this._getCurrentURL().split('/');
         const pathSegs = pathnameSplit.length > 1 ? pathnameSplit.slice(1) : [];
@@ -71,7 +70,7 @@ export default class Router {
         const matchedRoute = this._matchUrlToRoute(urlSegs);
         if (!matchedRoute) {
             const routeWithNullPath = this.routes.find(route => route.path === null);
-            routeWithNullPath?.renderTemplate();
+            routeWithNullPath?.renderTemplate(); // null, undefined인 경우 함수 호출하지 않음
             
         } else {
             matchedRoute.renderTemplate();
@@ -79,7 +78,7 @@ export default class Router {
     }
 
      // 해당 경로 history에 push
-    navigateTo(path: string): void {
+    public navigateTo(path: string): void {
         const pathnameSplit = this._getCurrentURL();
         if (path !== pathnameSplit) {
             window.history.pushState(null, '', path);

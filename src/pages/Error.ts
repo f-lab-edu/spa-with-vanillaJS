@@ -1,10 +1,16 @@
 import Component from '../core/Components'
 
+interface ErrorProp{
+    $element: HTMLElement;
+}
 export default class Error extends Component{
-   constructor({ $element}) {
+   constructor({ $element}:ErrorProp) {
         super($element);
-        this.render();
    }
+    
+    setComponent():void {
+        this.render();
+    }
     
    template() {
         return `

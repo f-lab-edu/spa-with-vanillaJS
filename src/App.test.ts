@@ -2,10 +2,10 @@ import routes from './routes'
 
 describe('App 페이지 확인', () => {
     test('error 이동 테스트', () => {
-         delete (window as any).location;
+         delete window.location;
         (window as any).location = { href: 'http://localhost:9000/posts/nopathexist',pathname: 'http://localhost:9000/posts/nopathexist' };
 
-        let $element = document.createElement('div');
+        const $element = document.createElement('div');
         $element.innerHTML = `
                 <header></header>
                 <main></main>

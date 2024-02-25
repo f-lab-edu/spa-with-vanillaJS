@@ -3,13 +3,10 @@ import Footer from './components/Footer'
 import routes from './routes'
 import Component from './core/Components'
 import styles from './assets/css/App.module.css'
-
-interface AppProps {
-  $element: HTMLElement;
-}
+import Router from './router/Router'
 
 export default class App extends Component {
-    private router: any; // Replace 'any' with the actual type of your router
+    private router: Router;
     private header: Header;
     private footer: Footer;
 
@@ -22,6 +19,7 @@ export default class App extends Component {
     setComponent():void {
         this.render();
     }
+    
     template(): string {
         return `
             <header></header>
@@ -31,7 +29,7 @@ export default class App extends Component {
     }
 
     setTemplate(): void {
-        this.router = routes(this.$element.querySelector('main'));
+    this.router = routes(this.$element.querySelector('main'));
       this.header = new Header({ $element: this.$element.querySelector('header'), router: this.router });
       this.header.setComponent();
       this.footer = new Footer({ $element: this.$element.querySelector('footer') });

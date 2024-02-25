@@ -1,8 +1,7 @@
 export default abstract class Component {
     protected $element: HTMLElement;
     protected $container: HTMLElement;
-    protected state: any; // Replace 'any' with the actual type of your state
-
+    protected state: {};
     constructor ($element: HTMLElement) { 
         this.$container = document.createElement('div');
         $element.appendChild(this.$container);
@@ -22,7 +21,7 @@ export default abstract class Component {
     protected abstract template(): string;
 
     // 랜더링 수행
-    public render(): void {
+    protected render(): void {
         this.$element.innerHTML = this.template();
         this.setTemplate();
         this.setEvent();
@@ -31,7 +30,7 @@ export default abstract class Component {
     // 랜더링 수행 이후 추가적으로 수행해야 할 작업
     protected setEvent(): void { }
     
-    public setState (newState: any): void { // Replace 'any' with the actual type of your state
+    protected setState (newState: object): void {
         this.state = { ...this.state, ...newState };
         this.render();
     }

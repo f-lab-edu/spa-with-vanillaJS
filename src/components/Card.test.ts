@@ -6,7 +6,10 @@ import styles from '../assets/css/Card.module.css'
 describe('Card 컴포넌트 동작 확인', () => {
     test('컴포넌트 정상 랜더링 테스트', () => {
         const $element = document.createElement('div');
-        const CardComponent = new Card({ $element: $element, router: routes, id:0});
+        $element.innerHTML = `<main></main>`
+    
+        const router = routes($element.querySelector('main'));
+        const CardComponent = new Card({ $element: $element, router: router, id:0});
         CardComponent.setComponent();
         const h1Element = $element.querySelector('.posts h1');
         

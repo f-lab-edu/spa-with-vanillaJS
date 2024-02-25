@@ -1,16 +1,17 @@
 import Card from '../components/Card'
 import Component from '../core/Components'
 import styles from '../assets/css/Home.module.css'
+import Router from '../router/Router';
 
 const NUMBER_OF_CARD = 5;
 
 interface HomePageProps {
   $element: HTMLElement;
-  router: any; // Replace 'any' with the actual type of your router
+  router: Router; 
 }
 
 export default class HomePage extends Component{
-    private router: any; // Replace 'any' with the actual type of your router
+    private router: Router; 
     private card: Card;
 
     constructor({ $element, router }: HomePageProps) {
