@@ -1,15 +1,19 @@
-import styles from './Footer.module.css'
-import Component from '../core/Components.js'
+import styles from '../assets/css/Footer.module.css';
+import Component from '../core/Components';
 
-export default class Footer extends Component{
-   constructor({ $app }) {
-        super($app);
-        this.setup();
-        this.render();
-   }
-    
-   template() {
-        return `
+interface FooterProps {
+  $element: HTMLElement;
+}
+
+export default class Footer extends Component {
+  constructor({ $element }: FooterProps) {
+    super($element);
+  }
+  setComponent(): void {
+    this.render()
+  }
+  template(): string {
+    return `
             <footer class = "${styles.foot}">
                 <div class = "${styles.adv}"> 토스트팀이 만드는 <br/> 수많은 혁신의 순간들</div>
                 <div class = "${styles.services}">
@@ -30,10 +34,5 @@ export default class Footer extends Component{
                 </div>
             </footer>
         `;
-    }
-
-    setEvent() {
-        
-    }
+  }
 }
-

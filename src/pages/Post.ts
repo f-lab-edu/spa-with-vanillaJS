@@ -1,33 +1,52 @@
-import styles from './Post.module.css'
-import Component from '../core/Components.js'
+import styles from '../assets/css/Post.module.css';
+import Component from '../core/Components';
 import Image0 from '../assets/images/Planet.jpeg';
 import Image1 from '../assets/images/Architect.jpeg';
 import Image2 from '../assets/images/Space.jpeg';
 import Image3 from '../assets/images/TENET.jpeg';
 import Image4 from '../assets/images/Winter.jpeg';
+import Router from '../router/Router';
+
+interface PostProps {
+  $element: HTMLElement;
+  router: Router;
+}
+
+interface PostState {
+  img: string;
+  title: string;
+}
 
 export default class Post extends Component {
-    constructor({ $app }) {
-        $app.innerHTML = '';
-        super($app);
-        this.id = window.location.pathname.split('/').pop();
-        this.images = [Image0, Image1, Image2, Image3, Image4];
-        this.setup();
-        this.render()
-    }
+  private router: Router;
+  private id: string;
+  private images: string[];
+  private pageState: PostState;
 
-    setup() {
-        this.state = {
-            img: this.images[this.id],
-            title: `이것은 ${this.id}번째 포스트 페이지입니다.`
-        };
-    }
+  constructor({ $element, router }: PostProps) {
+    $element.innerHTML = '';
+    super($element);
+    this.router = router;
+    this.id = window.location.pathname.split('/').pop();
+    this.images = [Image0, Image1, Image2, Image3, Image4];
+  }
+  setComponent(): void {
+    this.setup();
+    this.render();
+  }
+  setup(): void {
+    this.pageState = {
+      img: this.images[Number(this.id)],
+      title: `이것은 ${this.id}번째 포스트 페이지입니다.`,
+    };
+  }
 
-    template() {
-        return `
+  template(): string {
+    return `
             <div class = "${styles.postContent}">
-                <img class = "${styles.titleImage}" src="${this.state.img}" />
-                <h1 class = "${styles.postTitle}">${this.state.title}</h1>
+                <img class = "${styles.titleImage}" src="${this.pageState.img}" />
+                <div class = "${styles.datas}"></div>
+                <h1 class = "${styles.postTitle}">${this.pageState.title}</h1>
                 <p class = "${styles.postSubContent}">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 <br/>
@@ -59,6 +78,18 @@ export default class Post extends Component {
                 Aperiam deleniti molestiae hic porro! Harum voluptatem eligendi odio voluptate quis, earum quidem nihil, ullam maiores sed optio deserunt praesentium ipsam minima? Earum harum eveniet ut delectus qui tenetur esse?
             </p>
             </div>
-        `
+        `;
+  }
+
+  setEvent(): void {
+    const datasDiv = this.$element.querySelector('div.' + styles.datas);
+    if (datasDiv) {
+      let html = '';
+      for (let key in this.router.data) {
+        let value = this.router.data[key];
+        html += `<p>${key}: ${value}</p>`;
+      }
+      datasDiv.innerHTML = html;
     }
+  }
 }
