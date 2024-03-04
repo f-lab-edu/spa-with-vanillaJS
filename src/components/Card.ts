@@ -8,9 +8,9 @@ import Component from '../core/Components';
 import Router from '../router/Router';
 
 interface CardProps {
-  $element: HTMLElement
-  router: Router
-  id: number
+  $element: HTMLElement;
+  router: Router;
+  id: number;
 }
 
 export default class Card extends Component {
@@ -25,12 +25,12 @@ export default class Card extends Component {
     this.router = router;
   }
 
-  setComponent(): void {
+  setComponent() {
     this.setup();
     this.render();
   }
 
-  setup(): void {
+  setup() {
     this.images = [Image0, Image1, Image2, Image3, Image4];
     this.img = new Image();
     this.img.className = 'thumbnail';
@@ -53,7 +53,7 @@ export default class Card extends Component {
         `;
   }
 
-  setEvent(): void {
+  setEvent() {
     this.$element
       .querySelector('div.' + styles.contents)
       .addEventListener('click', (e) => {

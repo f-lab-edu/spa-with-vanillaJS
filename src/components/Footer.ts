@@ -9,8 +9,8 @@ export default class Footer extends Component {
   constructor({ $element }: FooterProps) {
     super($element);
   }
-  setComponent(): void {
-    this.render()
+  setComponent() {
+    this.render();
   }
   template(): string {
     return `

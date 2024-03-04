@@ -30,11 +30,11 @@ export default class Post extends Component {
     this.id = window.location.pathname.split('/').pop();
     this.images = [Image0, Image1, Image2, Image3, Image4];
   }
-  setComponent(): void {
+  setComponent() {
     this.setup();
     this.render();
   }
-  setup(): void {
+  setup() {
     this.pageState = {
       img: this.images[Number(this.id)],
       title: `이것은 ${this.id}번째 포스트 페이지입니다.`,
@@ -81,7 +81,7 @@ export default class Post extends Component {
         `;
   }
 
-  setEvent(): void {
+  setEvent() {
     const datasDiv = this.$element.querySelector('div.' + styles.datas);
     if (datasDiv) {
       let html = '';

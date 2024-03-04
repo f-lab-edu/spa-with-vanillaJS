@@ -15,7 +15,7 @@ export default class Router {
     window.addEventListener('popstate', () => this.loadInitialRoute());
   }
 
-  public addRoute(path: string, renderTemplate: () => void): void {
+  public addRoute(path: string, renderTemplate: () => void) {
     this.routes.push({ path, renderTemplate });
   }
 
@@ -29,7 +29,7 @@ export default class Router {
     return path;
   }
 
-  private _parseQueryParameters(): void {
+  private _parseQueryParameters() {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
     params.forEach((value, key) => {
@@ -62,14 +62,14 @@ export default class Router {
   }
 
   // path 추출 및 해당 경로에 대한 컴포넌트 랜더링
-  public loadInitialRoute(): void {
+  public loadInitialRoute() {
     this._parseQueryParameters();
     const pathnameSplit = this._getCurrentURL().split('/');
     const pathSegs = pathnameSplit.length > 1 ? pathnameSplit.slice(1) : [];
     this._loadRoute(...pathSegs);
   }
 
-  private _loadRoute(...urlSegs: string[]): void {
+  private _loadRoute(...urlSegs: string[]) {
     const matchedRoute = this._matchUrlToRoute(urlSegs);
     if (!matchedRoute) {
       const routeWithNullPath = this.routes.find(
@@ -82,7 +82,7 @@ export default class Router {
   }
 
   // 해당 경로 history에 push
-  public navigateTo(path: string): void {
+  public navigateTo(path: string) {
     const pathnameSplit = this._getCurrentURL();
     if (path !== pathnameSplit) {
       window.history.pushState(null, '', path);

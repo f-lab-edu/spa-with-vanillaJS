@@ -20,7 +20,7 @@ export default class HomePage extends Component {
     this.router = router;
   }
 
-  setComponent(): void {
+  setComponent() {
     this.render();
   }
 
@@ -32,7 +32,7 @@ export default class HomePage extends Component {
         `;
   }
 
-  setTemplate(): void {
+  setTemplate() {
     for (let i = 0; i < NUMBER_OF_CARD; i++) {
       this.card = new Card({
         $element: this.$element,

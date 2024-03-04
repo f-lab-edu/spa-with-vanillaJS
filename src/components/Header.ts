@@ -4,7 +4,7 @@ import Router from '../router/Router';
 
 interface HeaderProps {
   $element: HTMLElement;
-  router: Router
+  router: Router;
 }
 
 export default class Header extends Component {
@@ -14,7 +14,7 @@ export default class Header extends Component {
     this.router = router;
   }
 
-  setComponent(): void {
+  setComponent() {
     this.setup();
     this.render();
   }
@@ -32,7 +32,7 @@ export default class Header extends Component {
         `;
   }
 
-  setEvent(): void {
+  setEvent() {
     this.$element
       .querySelector('div.' + styles.leftLogo)
       .addEventListener('click', () => {

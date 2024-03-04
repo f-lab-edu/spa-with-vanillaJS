@@ -5,7 +5,7 @@ class TestComponent extends Component {
     super($element);
   }
 
-  setComponent(): void {
+  setComponent() {
     this.render();
   }
 
