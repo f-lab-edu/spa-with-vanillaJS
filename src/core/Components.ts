@@ -34,7 +34,7 @@ export default abstract class Component {
     // 랜더링 수행 이후 추가적으로 수행해야 할 작업
   }
 
-  protected setState(newState: object) {
+  protected setState<T>(newState: T) {
     this.state = { ...this.state, ...newState };
     this.render();
   }
