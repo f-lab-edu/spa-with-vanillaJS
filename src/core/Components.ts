@@ -8,15 +8,15 @@ export default abstract class Component {
     this.$element = this.$container;
   }
 
-  protected setComponent(): void {
+  protected setComponent() {
     // 탬플릿에 대한 추가 컴포넌트 세팅 함수
   }
 
-  protected setTemplate(): void {
+  protected setTemplate() {
     // 탬플릿에 대한 추가 컴포넌트 세팅 함수
   }
 
-  protected setup(): void {
+  protected setup() {
     // 이벤트 셋업
   }
 
@@ -24,17 +24,17 @@ export default abstract class Component {
   protected abstract template(): string;
 
   // 랜더링 수행
-  protected render(): void {
+  protected render() {
     this.$element.innerHTML = this.template();
     this.setTemplate();
     this.setEvent();
   }
 
-  protected setEvent(): void {
+  protected setEvent() {
     // 랜더링 수행 이후 추가적으로 수행해야 할 작업
   }
 
-  protected setState(newState: object): void {
+  protected setState<T>(newState: T) {
     this.state = { ...this.state, ...newState };
     this.render();
   }

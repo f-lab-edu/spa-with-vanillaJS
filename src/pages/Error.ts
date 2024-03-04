@@ -8,7 +8,7 @@ export default class Error extends Component {
     super($element);
   }
 
-  setComponent(): void {
+  setComponent() {
     this.render();
   }
 

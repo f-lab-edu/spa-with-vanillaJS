@@ -15,7 +15,7 @@ export default class App extends Component {
     super($element);
   }
 
-  setComponent(): void {
+  setComponent() {
     this.render();
   }
 
@@ -27,7 +27,7 @@ export default class App extends Component {
         `;
   }
 
-  setTemplate(): void {
+  setTemplate() {
     this.router = routes(this.$element.querySelector('main'));
     this.header = new Header({
       $element: this.$element.querySelector('header'),
